@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-07-05T17:34:40.179013" rpa="false" schemaversion="5">
+<suite id="s1" name="TestCases" source="C:\Users\dell\PyCharmMiscProject\Tests\LoginPage\TestCases.robot">
+<test id="s1-t1" name="Login with a valid email and pwd" line="53">
+<kw name="Open webpage">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-05T17:34:40.903200" level="INFO">Opening browser 'chrome' to base url 'https://demowebshop.tricentis.com/'.</msg>
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-05T17:34:40.902577" elapsed="2.276886"/>
+</kw>
+<status status="PASS" start="2026-07-05T17:34:40.900570" elapsed="2.279340"/>
+</kw>
+<kw name="Go to Loginpage">
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-05T17:34:43.189833" level="INFO">Clicking element 'xpath=/html/body/div[4]/div[1]/div[1]/div[2]/div[1]/ul/li[2]/a'.</msg>
+<arg>xpath=/html/body/div[4]/div[1]/div[1]/div[2]/div[1]/ul/li[2]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-05T17:34:43.188706" elapsed="3.097121"/>
+</kw>
+<status status="PASS" start="2026-07-05T17:34:43.187592" elapsed="3.098514"/>
+</kw>
+<kw name="Input Text" owner="SeleniumLibrary">
+<msg time="2026-07-05T17:34:46.288413" level="INFO">Typing text 'malekbenahmed2008@gmail.com' into text field 'id=Email'.</msg>
+<arg>id=Email</arg>
+<arg>${valid_email}</arg>
+<doc>Types the given ``text`` into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-05T17:34:46.287390" elapsed="0.301133"/>
+</kw>
+<kw name="Input Password" owner="SeleniumLibrary">
+<msg time="2026-07-05T17:34:46.591194" level="INFO">Typing password into text field 'id=Password'.</msg>
+<msg time="2026-07-05T17:34:46.653148" level="INFO">Temporally setting log level to: NONE</msg>
+<arg>id=Password</arg>
+<arg>${valid_pwd}</arg>
+<doc>Types the given password into the text field identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-05T17:34:46.589554" elapsed="0.149809"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-05T17:34:46.740470" level="INFO">Clicking element 'xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/div[1]/div[2]/div[2]/form/div[5]'.</msg>
+<arg>xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/div[1]/div[2]/div[2]/form/div[5]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-05T17:34:46.739938" elapsed="0.788387"/>
+</kw>
+<kw name="Location Should Be" owner="SeleniumLibrary">
+<msg time="2026-07-05T17:34:47.537588" level="INFO">Current location is 'https://demowebshop.tricentis.com/'.</msg>
+<arg>https://demowebshop.tricentis.com/</arg>
+<doc>Verifies that the current URL is exactly ``url``.</doc>
+<status status="PASS" start="2026-07-05T17:34:47.528914" elapsed="0.008902"/>
+</kw>
+<tag>4</tag>
+<status status="PASS" start="2026-07-05T17:34:40.899247" elapsed="6.639727"/>
+</test>
+<doc>This file includes all test cases of the login page</doc>
+<status status="PASS" start="2026-07-05T17:34:40.183077" elapsed="7.358217"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">4</stat>
+</tag>
+<suite>
+<stat name="TestCases" id="s1" pass="1" fail="0" skip="0">TestCases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
