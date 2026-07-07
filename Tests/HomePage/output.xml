@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.4.2 (Python 3.13.12 on win32)" generated="2026-07-07T02:53:27.754114" rpa="false" schemaversion="5">
+<suite id="s1" name="TestCases" source="C:\Users\dell\PyCharmMiscProject\Tests\HomePage\TestCases.robot">
+<test id="s1-t1" name="Select a Grid view" line="130">
+<kw name="Click on Books product">
+<kw name="Open Browser" owner="SeleniumLibrary">
+<msg time="2026-07-07T02:53:28.456239" level="INFO">Opening browser 'chrome' to base url 'https://demowebshop.tricentis.com/'.</msg>
+<arg>${url}</arg>
+<arg>chrome</arg>
+<doc>Opens a new browser instance to the optional ``url``.</doc>
+<status status="PASS" start="2026-07-07T02:53:28.455649" elapsed="24.628075"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-07T02:53:53.085492" level="INFO">Clicking element 'xpath=/html/body/div[4]/div[1]/div[2]/ul[1]/li[1]/a'.</msg>
+<arg>xpath=/html/body/div[4]/div[1]/div[2]/ul[1]/li[1]/a</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-07T02:53:53.084308" elapsed="0.586592"/>
+</kw>
+<status status="PASS" start="2026-07-07T02:53:28.454371" elapsed="25.216789"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-07T02:53:53.671985" level="INFO">Clicking element 'id=products-viewmode'.</msg>
+<arg>id=products-viewmode</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-07T02:53:53.671669" elapsed="0.081281"/>
+</kw>
+<kw name="Click Element" owner="SeleniumLibrary">
+<msg time="2026-07-07T02:53:53.753616" level="INFO">Clicking element 'xpath=//*[@id="products-viewmode"]/option[1]'.</msg>
+<arg>xpath=//*[@id="products-viewmode"]/option[1]</arg>
+<doc>Click the element identified by ``locator``.</doc>
+<status status="PASS" start="2026-07-07T02:53:53.753319" elapsed="0.058949"/>
+</kw>
+<kw name="Get Element Attribute" owner="SeleniumLibrary">
+<msg time="2026-07-07T02:53:53.847157" level="INFO">${class} = product-grid</msg>
+<var>${class}</var>
+<arg>xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]</arg>
+<arg>class</arg>
+<doc>Returns the value of ``attribute`` from the element ``locator``.</doc>
+<status status="PASS" start="2026-07-07T02:53:53.813279" elapsed="0.034004"/>
+</kw>
+<kw name="Should Be Equal" owner="BuiltIn">
+<arg>${class}</arg>
+<arg>product-grid</arg>
+<doc>Fails if the given objects are unequal.</doc>
+<status status="PASS" start="2026-07-07T02:53:53.847835" elapsed="0.000538"/>
+</kw>
+<tag>9</tag>
+<status status="PASS" start="2026-07-07T02:53:28.453547" elapsed="25.395185"/>
+</test>
+<doc>this file includes all the test cases of HomePage</doc>
+<status status="PASS" start="2026-07-07T02:53:27.757764" elapsed="26.092021"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+<stat pass="1" fail="0" skip="0">9</stat>
+</tag>
+<suite>
+<stat name="TestCases" id="s1" pass="1" fail="0" skip="0">TestCases</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
