@@ -135,4 +135,8 @@ Select a Grid view
     ${class}=    Get Element Attribute    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]    class
     Should Be Equal    ${class}    product-grid
 
+Filter products By price lower than 25,00
+    [Tags]    10
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[2]/div/div[2]/ul/li[1]/a/font
 
