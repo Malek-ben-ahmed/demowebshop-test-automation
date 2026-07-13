@@ -138,5 +138,62 @@ Select a Grid view
 Filter products By price lower than 25,00
     [Tags]    10
     Click on Books product
-    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[2]/div/div[2]/ul/li[1]/a/font
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[2]/div/div[2]/ul/li[1]/a
+    ${elements}    Get WebElements    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[1]/div/div[2]/div[3]/div[1]/span[2]
+    ${filtrage}=    Set Variable    ${True}
+
+    FOR    ${element}    IN    @{elements}
+        ${prix}=    Get Text    ${element}
+        IF    int(${prix}) > 25
+            ${filtrage}=    Set Variable    ${False}
+            BREAK
+        END
+    END
+    Should Be Equal    ${filtrage}    ${True}
+
+Filter products By price between 25,00-50,00
+    [Tags]    11
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[2]/div/div[2]/ul/li[2]/a
+    ${elements}    Get WebElements    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[1]/div/div[2]/div[3]/div[1]/span[2]
+    ${filtrage}=    Set Variable    ${True}
+
+    FOR    ${element}    IN    @{elements}
+        ${prix}=    Get Text    ${element}
+        IF    50<int(${prix}) or int(${prix})<25
+            ${filtrage}=    Set Variable    ${False}
+            BREAK
+        END
+    END
+    Should Be Equal    ${filtrage}    ${True}
+
+Filter products By price higher than 50,00
+    [Tags]    12
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[2]/div/div[2]/ul/li[3]/a
+    ${elements}    Get WebElements    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[1]/div/div[2]/div[3]/div[1]/span[2]
+    ${filtrage}=    Set Variable    ${True}
+
+    FOR    ${element}    IN    @{elements}
+        ${prix}=    Get Text    ${element}
+        IF    int(${prix})<50
+            ${filtrage}=    Set Variable    ${False}
+            BREAK
+        END
+    END
+    Should Be Equal    ${filtrage}    ${True}
+
+Delete filter option
+    [Tags]    13
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[2]/div/div[2]/ul/li[3]/a
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[2]/div/div[2]/div[2]/a
+    ${elements}=    Get WebElements    class=product-grid
+    ${nb}=    Set Variable    ${TRUE}
+    ${length}=    Get Length    ${elements}
+    IF    ${length}>7
+        ${nb}=    Set Variable    ${False}
+    END
+    Should Be Equal    ${nb}    ${True}
+
 
