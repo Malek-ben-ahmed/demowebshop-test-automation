@@ -196,4 +196,124 @@ Delete filter option
     END
     Should Be Equal    ${nb}    ${True}
 
+User can add one or more Book to the shopping cart from Add to cart button
+    [Tags]    14
+    Click on Books product
+    Click Element   xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[1]/div/div[2]/div[3]/div[2]
+    Sleep    500ms
+    Click Element   xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[1]/div/div[2]/div[3]/div[2]
+    Wait Until Element Contains    xpath=//*[@id="topcartlink"]/a/span[2]    (2)    10s
+    ${web_element}    Get WebElements    class=cart-qty
+    ${Qté}    Get Text    ${web_element}[0]
+    Should Be Equal    ${Qté}    (2)
+
+User can add one or more Book to the shopping cart from product information
+    [Tags]    15
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[5]/div/div[2]/h2/a
+    Click Button    id=add-to-cart-button-22
+    Wait Until Element Contains    xpath=//*[@id="topcartlink"]/a/span[2]    (1)    10s
+    ${web_element}    Get WebElements    class=cart-qty
+    ${Qté}    Get Text    ${web_element}[0]
+    Should Be Equal    ${Qté}    (1)
+User can get all informations about the book added to shopping cart
+    [Tags]    16
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[3]/div/div[2]/h2/a
+    Click Button    id=add-to-cart-button-45
+    Sleep    500ms
+    Click Button    id=add-to-cart-button-45
+    Click Element    class=cart-label
+    ${product}    Get WebElements    class=product
+    ${product_price}    Get Text    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/table/tbody/tr/td[4]/span[2]
+    ${product_total_price}    Get Text    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/table/tbody/tr/td[6]/span[2]
+    ${product_title}    Get Text    ${product}
+    ${nb_product}    Get Value    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/table/tbody/tr/td[5]/input
+    Should Be Equal    ${product_title}    Fiction
+    Should Be Equal    ${nb_product}    2
+    Should Be Equal    ${product_price}    24.00
+    Should Be Equal    ${product_total_price}    48.00
+User can remove one or more books added to shopping cart
+    [Tags]    17
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[1]/div/div[2]/div[3]/div[2]
+    Sleep    500ms
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[5]/div/div[2]/div[3]/div[2]
+    Wait Until Element Is Not Visible    id=bar-notification    10s
+    Click Element    id=topcartlink
+    Wait Until Element Is Visible    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/table/tbody/tr/td[1]/input    20s
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div/form/table/tbody/tr/td[1]/input
+    Click Element    name=updatecart
+    ${element}    Get WebElements    class=cart-item-row
+    Length Should Be    ${element}    1
+User can add Books to compare list which are added or not to shopping cart
+    [Tags]    18
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[5]/div/div[2]/h2/a
+    Click Element    class=compare-products
+    Click Element    xpath=/html/body/div[4]/div[1]/div[2]/ul[1]/li[1]/a
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[3]/div/div[2]/h2/a
+    Click Element    class=compare-products
+    ${element}    Get WebElements    class=product-name
+    ${product_title}    Get Text    ${element}
+    Should Contain    ${product_title}    Fiction Health Book
+User can remove Books from the compare list
+    [Tags]    19
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[5]/div/div[2]/h2/a
+    Click Element    class=compare-products
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div/div[2]/table/tbody/tr[1]/td[2]/div/p[1]/input
+    ${element}    Get WebElements    class=page-body
+    ${text}    Get Text    ${element}
+    Should Be Equal    ${text}    You have no items to compare.
+
+User can add Book to wishlist
+    [Tags]    20
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[5]/div/div[2]/h2/a
+    Click Button    id=add-to-wishlist-button-22
+    Click Element    xpath=/html/body/div[4]/div[1]/div[1]/div[2]/div[1]/ul/li[4]/a
+    ${whishlist}    Get WebElements    class=wishlist-qty
+    ${qté}    Get Text    ${whishlist}
+    Should Be Equal    ${qté}    (1)
+
+User can add Book to shopping cart from whishlist
+    [Tags]    21
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[5]/div/div[2]/h2/a
+    Click Button    id=add-to-wishlist-button-22
+    Click Element    xpath=/html/body/div[4]/div[1]/div[2]/ul[1]/li[1]/a
+    Click Element    class=ico-wishlist
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div[1]/form/table/tbody/tr/td[2]/input
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div[1]/form/div/div/input[2]
+    Wait Until Element Contains    xpath=//*[@id="topcartlink"]/a/span[2]    (1)    10s
+    ${product_cart}    Get WebElements    class=cart-qty
+    ${qté}    Get Text    ${product_cart}
+    Should Be Equal    ${qté}    (1)
+
+User can remove Book from whishlist
+    [Tags]    22
+    Click on Books product
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div[2]/div[2]/div[2]/div[3]/div[5]/div/div[2]/h2/a
+    Click Button    id=add-to-wishlist-button-22
+    Click Element    xpath=/html/body/div[4]/div[1]/div[2]/ul[1]/li[1]/a
+    Click Element    class=ico-wishlist
+    Click Element    xpath=/html/body/div[4]/div[1]/div[4]/div/div/div[2]/div[1]/form/table/tbody/tr/td[1]/input
+    Click Element    name=updatecart
+    ${text}    Get Text    class=page-body
+    Should Be Equal    ${text}    The wishlist is empty!
+
+User can search for a book
+    [Tags]    23
+    Click on Books product
+    Input Text    id=small-searchterms    Health
+    Press Keys    NONE    ENTER
+    ${element}    Get WebElements    class=product-title
+    ${title_book}    Get Text    ${element}
+    Should Be Equal    ${title_book}    Health Book
+
+
+
+
+
 
